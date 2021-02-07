@@ -1,67 +1,67 @@
 #include<stdio.h>
 
-int bu[10],ba[10],bb[10];
+int uset[10],seta[10],setb[10];
 void main()
 {
-   int u[10]={1,2,3,4,5,6,7,8,9,10};
-    int a[10]={3,5,7,9};
-    int b[10]={1,2,5,7,8,9};
-
-    convertion(u,a,b);
-    unionop();
-    intersection();
-    difference();
+     int u[10]={1,2,3,4,5,6,7,8,9,10};
+     int a[10]={3,5,7,9};
+     int b[10]={1,2,5,7,8,9};
+     convertion(u,a,b);
+     unionop();
+     intersection();
+     difference();
 }
+
 void convertion(int u[],int a[],int b[])
 {
-    int i=0,j=0;
-    for(i=0;i<10;i++)
-    {
-       bu[i]=1;
-    }
-
-    for(i=0;i<10;i++)
-    {
-        for (j=0;j<10;j++)
-        {
-            if(u[i]==a[j])
-            {
-                ba[i]=1;
-                break;
+     int i=0,j=0;
+     for(i=0;i<10;i++)
+     {
+          uset[i]=1;
+     }
+     for(i=0;i<10;i++)
+     {
+          for (j=0;j<10;j++)
+          {
+               if(u[i]==a[j])
+               {
+                    seta[i]=1;
+                    break;
+               }
+               else
+                    seta[i]=0;
+          }
+      }
+      for(i=0;i<10;i++)
+      {
+           for (j=0;j<10;j++)
+           {
+                     if(u[i]==b[j])
+                     {
+                          setb[i]=1;
+                          break;
+                     }
+                     else
+                         setb[i]=0;
             }
-            else
-                ba[i]=0;
-        }
-    }
-    for(i=0;i<10;i++)
-    {
-        for (j=0;j<10;j++)
-        {
-            if(u[i]==b[j])
-            {
-                bb[i]=1;
-                break;
-            }
-             else
-                bb[i]=0;
-        }
-    }
-    printf("Universal set:");
-    for(i=0;i<10;i++)
-    {
-        printf("%d",bu[i]);
-    }
-     printf("\nSet A:");
-    for(i=0;i<10;i++)
-    {
-        printf("%d",ba[i]);
-    }
+      }
+      printf("Universal set:");
+      for(i=0;i<10;i++)
+      {
+           printf("%d",uset[i]);
+      }
+      printf("\nSet A:");
+      for(i=0;i<10;i++)
+      {
+           printf("%d",seta[i]);
+      }
       printf("\nSet B:");
-    for(i=0;i<10;i++)
-    {
-        printf("%d",bb[i]);
-    }
+      for(i=0;i<10;i++)
+      {
+           printf("%d",setb[i]);
+      }
 }
+
 void unionop()
 {
     int m[10],i,j;
@@ -72,11 +72,9 @@ void unionop()
     printf("\nUnion operation:");
      for(i=0;i<10;i++)
     {
-
-            if(bu[i]==ba[i] || bu[i]==bb[i])
+            if(uset[i]==seta[i] || uset[i]==setb[i])
             {
                 m[i]=1;
-
             }
     }
     for(i=0;i<10;i++)
@@ -84,6 +82,7 @@ void unionop()
         printf("%d",m[i]);
     }
 }
+
 void intersection()
 {
     int m[10],i,j;
@@ -92,10 +91,10 @@ void intersection()
        m[i]=0;
     }
     printf("\nIntersection operation:");
-     for(i=0;i<10;i++)
+    for(i=0;i<10;i++)
     {
 
-            if(bu[i]==ba[i] && bu[i]==bb[i])
+            if(uset[i]==seta[i] && uset[i]==setb[i])
             {
                 m[i]=1;
 
@@ -106,6 +105,7 @@ void intersection()
         printf("%d",m[i]);
     }
 }
+
 void difference()
 {
      int m[10],i,j;
@@ -115,7 +115,7 @@ void difference()
     }
     for(i=0;i<10;i++)
     {
-        if(ba[i]==1 && ba[i]!=bb[i])
+        if(seta[i]==1 && seta[i]!=setb[i])
         {
             m[i]=1;
         }
